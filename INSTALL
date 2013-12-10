@@ -1,6 +1,6 @@
 Thanks for downloading django-planet.
 
-Django-planet has been tested with django 1.2.1 and python 2.6.
+Django-planet has been tested with django 1.2.1 to 1.6 and python 2.6 & 2.7.
 
 In order to integrate django-planet to your django project
 you'll need to install also django-atompub [1], django-pagination [2],
@@ -45,7 +45,15 @@ feedparser [3] and django-tagging [4].
     ./manage.py add_feed http://seeknuance.com/tag/django/feed/atom
     ./manage.py add_feed http://www.willmcgugan.com/blog/tech/feeds/tag/django/
 
+
 * add a cron entry to run periocically: ./manage.py update_all_feeds
+
+* notice That in Django 1.6 a few changes are required:
+  
+  use planet_ prefix before add_feed or update_all_feeds command.
+  need to add 'django.contrib.sites' to installed apps and SITE-ID=1 (or something suitable) in settings.py since sites doesn't come enabled anymore,
+  need to add: PLANET = { "USER_AGENT":"YOURUSERAGENTHERE"} in settings.py
+
 
 * run ./manage.py runserver and enjoy it!
 
